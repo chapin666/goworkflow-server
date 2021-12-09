@@ -1,1 +1,1 @@
-# goworkflow-server
+# kitten-server
