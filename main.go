@@ -128,10 +128,11 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Routes
-	e.POST("/flow", saveFlow(workflowEngine))
-	e.GET("/flow/page", flowList(workflowEngine))
-	e.GET("/flow/:id", getFlow(workflowEngine))
-	e.DELETE("/flow/:id", delFlow(workflowEngine))
+	g := e.Group("/api")
+	g.POST("/flow", saveFlow(workflowEngine))
+	g.GET("/flow/page", flowList(workflowEngine))
+	g.GET("/flow/:id", getFlow(workflowEngine))
+	g.DELETE("/flow/:id", delFlow(workflowEngine))
 
 	// Start server
 	e.Logger.Fatal(e.Start(":6062"))
